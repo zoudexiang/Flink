@@ -108,13 +108,14 @@ object TableApiTest {
         |where id='sensor_1'
         |""".stripMargin
     )
-    // 此处不是追加流，因为进行聚合了，所以使用 toRetractStream
-    resultSQLTable.toRetractStream[(String, Double)].print("resultSQLTable")
+    resultSQLTable.toAppendStream[(String, Double)].print("resultSQLTable")
 
     // 3.3 简单聚合, 统计每个传感器温度个数
     val groupByResultTable: Table = sensorTable
       .groupBy('id)
       .select('id, 'id.count as 'count)
+
+    // 此处不是追加流，因为进行聚合了，所以使用 toRetractStream
     groupByResultTable.toRetractStream[(String, Long) ].print("groupByResultTable")
 
     // 3.4 SQL 实现简单聚合

@@ -14,7 +14,10 @@ import org.apache.flink.table.api.scala._
  * @Author dexiang.zou
  * @Date 2020/12/29 16:35
  *
- * first : table api
+ * first : table api and flink sql
+ *
+ * 1、介绍两种查询数据的方式, 第一种是 table api, 使用算子; 第二种是 flink sql.
+ * 2、介绍将流转换为一张表 env.fromDataStream(dataStream) 以及将表转换为流 table.toAppendStream[T] 的方式
  **/
 object TableExample {
 

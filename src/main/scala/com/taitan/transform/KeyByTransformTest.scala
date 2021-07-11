@@ -32,8 +32,6 @@ object KeyByTransformTest {
 
     val keyByStream: KeyedStream[(String, Int), Tuple] = tuple2DataStream.keyBy(0)
 
-    sumDS.filter()
-
     var sumDS: DataStream[(String, Int)] = keyByStream.sum(1)
     var minDS: DataStream[(String, Int)] = keyByStream.min(1)
     var maxDS: DataStream[(String, Int)] = keyByStream.max(1)
